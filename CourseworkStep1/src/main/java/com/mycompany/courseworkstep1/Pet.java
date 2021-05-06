@@ -17,15 +17,4 @@ public class Pet {
         this.name = name;
     }
     
-    public void addPetToTree(Pet pet)throws BinarySearchTree.NotUniqueException{
-        this.petBST.insert(pet.name);
-    }
-    
-    public String toString(){
-        String details = new String();
-        
-        details += this.petBST.toString();
-        
-        return details;
-    }
 }

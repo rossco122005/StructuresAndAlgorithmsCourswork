@@ -12,9 +12,7 @@ package com.mycompany.courseworkstep1;
 public class PetTest {
     public static void main(String[] args){
         Integer choice;
-        
-        
-        
+
         do{
             System.out.println("0. Quit");
             System.out.println("1. Add a new pet type");
@@ -27,16 +25,6 @@ public class PetTest {
             switch (choice){
                 case 1:
                     System.out.println("Add a new pet type");
-                    Pet newPet = new Pet();
-                    String newPetName = Input.getString("Enter the new pet type");
-                    newPet.createNewPet(newPetName);
-                    try{
-                        newPet.addPetToTree(newPet);
-                    }catch(SortedADT.NotUniqueException e){
-                        System.out.println("Pet type already exists");
-                    }
-                    
-                    
                     break;
                 case 2:
                     System.out.println("Find if company sullpes for pet type");
