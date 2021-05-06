@@ -11,8 +11,21 @@ package com.mycompany.courseworkstep1;
  */
 public class Pet {
     private String name;
+    private BinarySearchTree petBST;
     
-    public void addPetType(String name){
+    public void createNewPet(String name){
         this.name = name;
+    }
+    
+    public void addPetToTree(Pet pet)throws BinarySearchTree.NotUniqueException{
+        this.petBST.insert(pet.name);
+    }
+    
+    public String toString(){
+        String details = new String();
+        
+        details += this.petBST.toString();
+        
+        return details;
     }
 }

@@ -10,7 +10,6 @@ package com.mycompany.courseworkstep1;
  * @author Ross
  */
 
-
 public class BinarySearchTree implements SortedADT {
 
     private class BinarySearchTreeNode {
@@ -277,7 +276,5 @@ public class BinarySearchTree implements SortedADT {
             this.replaceWithNextLargest(nodeForDeletion, current, current.left);
         }
     }
-
-
 }
 
