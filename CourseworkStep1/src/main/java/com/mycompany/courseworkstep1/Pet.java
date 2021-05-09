@@ -9,12 +9,31 @@ package com.mycompany.courseworkstep1;
  *
  * @author Ross
  */
-public class Pet {
+public class Pet implements Comparable<Pet>{
     private String name;
-    private BinarySearchTree petBST;
     
     public Pet(String name){
         this.name = name;
+    }
+    
+    public String toString(){
+        String details = new String();
+        
+        details += this.name + " ";
+        
+        return details;
+    }
+    
+    @Override
+    public int compareTo(Pet secondPet){
+        int compareTo = 0;
+        
+        if(this.name.compareTo(secondPet.name) < 0)
+            compareTo = -1;
+        else if(this.name.compareTo(secondPet.name) > 0)
+            compareTo = 1;
+        
+        return compareTo;
     }
     
 }

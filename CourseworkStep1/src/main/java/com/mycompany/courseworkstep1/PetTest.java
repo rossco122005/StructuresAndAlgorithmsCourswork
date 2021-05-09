@@ -12,15 +12,29 @@ package com.mycompany.courseworkstep1;
 public class PetTest {
     public static void main(String[] args){
         Integer choice;
-        SortedADT petBST = new BinarySearchTree();
+        PetBST petBST = new PetBST();
+        
+        Pet pet1 = new Pet("zoe");
+        Pet pet2 = new Pet("zoe");
+        
+        if(pet1.compareTo(pet2) == 0)
+            System.out.println("equal");
+        
+        if(pet1.compareTo(pet2) < 0)
+            System.out.println("less");
+        
+        if(pet1.compareTo(pet2) > 0)
+            System.out.println("greater");
+        
+        System.out.println();
 
         do{
             System.out.println("0. Quit");
             System.out.println("1. Add a new pet type");
-            System.out.println("2. Find if company supplies for pet type");
+            System.out.println("2. Find if company supplies for a pet type");
             System.out.println("3. Display a specific pet type");
             System.out.println("4. Remove a pet type");
-            System.out.println("5. Display all pet types");
+            System.out.println("5. Display all pet types in alphabetical order");
             choice = Input.getInteger("Please choose: ");
             
             switch (choice){
@@ -28,7 +42,13 @@ public class PetTest {
                     System.out.println("Add a new pet type");
                     String newPetName = Input.getString("Enter the new pet type you'd like to add: ");
                     Pet newPet = new Pet(newPetName);
-                    petBST.insert(newPet);
+
+                    try{
+                        petBST.insert(newPet);
+                    }catch(PetBST.NotUniqueException e){
+                        System.out.println("This pet type already exists");
+                    }
+
                     break;
                 case 2:
                     System.out.println("Find if company sullpes for pet type");
