@@ -12,6 +12,7 @@ package com.mycompany.courseworkstep1;
 public class PetTest {
     public static void main(String[] args){
         Integer choice;
+        SortedADT petBST = new BinarySearchTree();
 
         do{
             System.out.println("0. Quit");
@@ -25,6 +26,9 @@ public class PetTest {
             switch (choice){
                 case 1:
                     System.out.println("Add a new pet type");
+                    String newPetName = Input.getString("Enter the new pet type you'd like to add: ");
+                    Pet newPet = new Pet(newPetName);
+                    petBST.insert(newPet);
                     break;
                 case 2:
                     System.out.println("Find if company sullpes for pet type");

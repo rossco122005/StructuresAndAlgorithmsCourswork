@@ -13,7 +13,7 @@ public class Pet {
     private String name;
     private BinarySearchTree petBST;
     
-    public void createNewPet(String name){
+    public Pet(String name){
         this.name = name;
     }
     
