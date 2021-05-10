@@ -114,7 +114,6 @@ public class PetBST {
     }
     
     private Pet find(PetBSTNode petToFind, PetBSTNode current) throws NotFoundException{
-    
         Pet foundObject;
         if (current != null) {
             if (petToFind.pet.compareTo(current.pet) == 0) {
@@ -152,18 +151,6 @@ public class PetBST {
     }
 
     private void replaceNode(PetBSTNode replacement) {
-        /* algorithm
-            if current is root then 
-                set root to replacement node
-            else
-                if current is the root of the left subtree of parent then
-                    set parent's left subtreee to replacement node
-                else
-                    set parent's right subtree to replacement node
-                end if
-            end if
-            set current object to null
-         */
         if (this.current == this.root) // removing root
         {
             this.root = replacement;
@@ -176,19 +163,6 @@ public class PetBST {
     }
 
     private void replaceWithNextLargest(PetBSTNode nodeForDeletion, PetBSTNode parent, PetBSTNode current) {
-        /* Algorithm
-            if current does not have a left subtree then
-                copy the current object into the node for deletion
-                if parent matches the node for deletion then
-                    set parent's right subtree to be current's right subtree
-                else
-                    set parent's left subtree to be current's right subtree
-                end if
-                clear the current node
-            else
-                replace node for deletion with the next largest in current's left subtree
-            end if
-         */
         if (current.left == null) {
             nodeForDeletion.pet = current.pet;
             if (parent == nodeForDeletion) {
@@ -201,5 +175,14 @@ public class PetBST {
         } else {
             this.replaceWithNextLargest(nodeForDeletion, current, current.left);
         }
+    }
+    
+    public String displayPetDetails(){
+        String details = new String();
+        
+        details += this.current.pet + "\n";
+        details += "There are currently no products associated with this pet. This will be added at a later stage of this project.";
+        
+        return details;
     }
 }

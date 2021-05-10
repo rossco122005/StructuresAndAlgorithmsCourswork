@@ -38,6 +38,7 @@ public class PetTest {
                         System.out.println("This pet type already exists");
                     }
                     System.out.println();
+                    
                     break;
                 case 2:
                     System.out.println();
@@ -51,9 +52,22 @@ public class PetTest {
                         System.out.println("We do not currently supply for " + petToFind + "(s)");
                     }
                     System.out.println();
+                    
                     break;
                 case 3:
-                    System.out.println("Display a specific pet type");
+                    System.out.println();
+                    //System.out.println("Display a specific pet type");
+                    String petToDisplay = Input.getString("Enter the type of pet you'd like to display the details of: ");
+                    Pet petToBeDisplayed = new Pet(petToDisplay);
+                    
+                    try{
+                        petBST.find(petToBeDisplayed);
+                        System.out.println(petBST.displayPetDetails());
+                    }catch(PetBST.NotFoundException e){
+                        System.out.println(petToBeDisplayed + " cannot be found");
+                    }
+                    System.out.println();
+                    
                     break;
                 case 4:
                     System.out.println();
@@ -68,22 +82,29 @@ public class PetTest {
                         System.out.println(petToRemove + " could not be found");
                     }
                     System.out.println();
+                    
                     break;
                 case 5:
+                    System.out.println();
                     //System.out.println("Display all pet types in alphabetical order");
                     System.out.println("Here are all the pet types we supply for:");
                     System.out.println(petBST.displayInOrder());
+                    
                     break;
                 case 6:
                     System.out.println("Display the pets as a Binary Search Tree");
                     System.out.println(petBST);
+                    
                     break;
                 default:
-                    System.out.println("Invalid choice, please try again");
+                    if(choice == 0)
+                        System.out.println("Quitting");
+                    else
+                        System.out.println("Invalid choice, please try again");
+                    
                     break;
             }
             
         }while(choice != 0);
-        
     }
 }
