@@ -107,7 +107,9 @@ public class PetBST {
         }
     }
     
-    public Pet find(PetBSTNode petToFind) throws NotFoundException {
+    public Pet find(Pet pet) throws NotFoundException {
+        PetBSTNode petToFind = new PetBSTNode();
+        petToFind.pet = pet;
         return this.find(petToFind,this.root);
     }
     
@@ -130,5 +132,74 @@ public class PetBST {
             throw new NotFoundException();
         }
         return foundObject;
+    }
+    
+    public Pet remove(Pet pet) throws NotFoundException {
+        // sets up parent and current
+        Pet removedObject=this.find(pet);
+        if (this.current.left == null && this.current.right == null) {
+            this.replaceNode(null);
+        } else if (this.current.left != null && this.current.right == null) {
+            this.replaceNode(this.current.left);
+            this.current.left = null;
+        } else if (this.current.left == null && this.current.right != null) {
+            this.replaceNode(this.current.right);
+            this.current.right = null;
+        } else {
+            this.replaceWithNextLargest(this.current, this.current, this.current.right);
+        }
+        return removedObject;
+    }
+
+    private void replaceNode(PetBSTNode replacement) {
+        /* algorithm
+            if current is root then 
+                set root to replacement node
+            else
+                if current is the root of the left subtree of parent then
+                    set parent's left subtreee to replacement node
+                else
+                    set parent's right subtree to replacement node
+                end if
+            end if
+            set current object to null
+         */
+        if (this.current == this.root) // removing root
+        {
+            this.root = replacement;
+        } else if (this.current == this.parent.left) {
+            this.parent.left = replacement;
+        } else {
+            this.parent.right = replacement;
+        }
+        this.current.pet = null;
+    }
+
+    private void replaceWithNextLargest(PetBSTNode nodeForDeletion, PetBSTNode parent, PetBSTNode current) {
+        /* Algorithm
+            if current does not have a left subtree then
+                copy the current object into the node for deletion
+                if parent matches the node for deletion then
+                    set parent's right subtree to be current's right subtree
+                else
+                    set parent's left subtree to be current's right subtree
+                end if
+                clear the current node
+            else
+                replace node for deletion with the next largest in current's left subtree
+            end if
+         */
+        if (current.left == null) {
+            nodeForDeletion.pet = current.pet;
+            if (parent == nodeForDeletion) {
+                parent.right = current.right;
+            } else {
+                parent.left = current.right;
+            }
+            current.pet = null;
+            current.right = null;
+        } else {
+            this.replaceWithNextLargest(nodeForDeletion, current, current.left);
+        }
     }
 }
