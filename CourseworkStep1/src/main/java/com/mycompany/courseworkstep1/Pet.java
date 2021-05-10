@@ -35,5 +35,4 @@ public class Pet implements Comparable<Pet>{
         
         return compareTo;
     }
-    
 }
