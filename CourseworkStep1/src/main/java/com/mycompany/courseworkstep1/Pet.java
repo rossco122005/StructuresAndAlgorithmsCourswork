@@ -28,9 +28,9 @@ public class Pet implements Comparable<Pet>{
     public int compareTo(Pet secondPet){
         int compareTo = 0;
         
-        if(this.name.compareTo(secondPet.name) < 0)
+        if(this.name.toLowerCase().compareTo(secondPet.name.toLowerCase()) < 0)
             compareTo = -1;
-        else if(this.name.compareTo(secondPet.name) > 0)
+        else if(this.name.toLowerCase().compareTo(secondPet.name.toLowerCase()) > 0)
             compareTo = 1;
         
         return compareTo;

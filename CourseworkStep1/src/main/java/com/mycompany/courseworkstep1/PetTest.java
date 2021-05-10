@@ -12,21 +12,8 @@ package com.mycompany.courseworkstep1;
 public class PetTest {
     public static void main(String[] args){
         Integer choice;
+        
         PetBST petBST = new PetBST();
-        
-        Pet pet1 = new Pet("zoe");
-        Pet pet2 = new Pet("zoe");
-        
-        if(pet1.compareTo(pet2) == 0)
-            System.out.println("equal");
-        
-        if(pet1.compareTo(pet2) < 0)
-            System.out.println("less");
-        
-        if(pet1.compareTo(pet2) > 0)
-            System.out.println("greater");
-        
-        System.out.println();
 
         do{
             System.out.println("0. Quit");
@@ -48,10 +35,17 @@ public class PetTest {
                     }catch(PetBST.NotUniqueException e){
                         System.out.println("This pet type already exists");
                     }
-
+                    
                     break;
                 case 2:
-                    System.out.println("Find if company sullpes for pet type");
+                    System.out.println("Find if company supplies for pet type");
+                    String petToFind = Input.getString("Enter the type of pet you'd like to find: ");
+                    Pet petToBeFound = new Pet(petToFind);
+                    try{
+                        petBST.find(petToBeFound);
+                    }catch(PetBST.NotFoundException e){
+                        
+                    }
                     break;
                 case 3:
                     System.out.println("Display a specific pet type");
@@ -60,7 +54,8 @@ public class PetTest {
                     System.out.println("Remove a pet type");
                     break;
                 case 5:
-                    System.out.println("Display all pet types");
+                    System.out.println("Display all pet types in alphabetical order");
+                    System.out.println(petBST.displayInOrder());
                     break;
                 default:
                     System.out.println("Invalid choice, please try again");
