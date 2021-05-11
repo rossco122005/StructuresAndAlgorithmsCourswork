@@ -62,7 +62,7 @@ public class PetBSTWithLL {
         String details = new String();
         
         if(this.root == null)
-            details += "There are no pets in the system";
+            details += "There are no pets in the system" + "\n";
         else
             details += this.getInOrder(this.root) + "\n";
 
@@ -192,6 +192,49 @@ public class PetBSTWithLL {
             this.current.products.addProduct(product);
         }catch(ProductSortedLinkedList.NotUniqueException e){
             throw new NotUniqueException();
+        }
+    }
+    
+    public String displayProductsForPet(){
+        String details = new String();
+        
+        details += "Pet type: " + this.current.pet + "\n";
+        details += "Products stocked: " + "\n";
+        details += this.current.products;
+        
+        return details;
+    }
+    
+    public String displayAllPetsAndProducts(){
+        String details = new String();
+        
+        if(this.root == null)
+            details += "There are no pets in the system" + "\n";
+        else
+            details += this.getAllPetsAndProducts(this.root) + "\n";
+        
+        return details;
+    }
+    
+    private String getAllPetsAndProducts(PetBSTWithLLNode current){
+        String inOrderDetails = new String();
+        
+        if (current != null) {
+            inOrderDetails += this.getAllPetsAndProducts(current.left);
+            inOrderDetails += "Pet Type: " + current.pet + "\n";
+            inOrderDetails += "Products currently stored for " + current.pet + ":" + "\n";
+            inOrderDetails += current.products;
+            inOrderDetails += this.getAllPetsAndProducts(current.right);
+        }
+        
+        return inOrderDetails;
+    }
+    
+    public void removeProductFromPet(Product productToRemove) throws NotFoundException{
+        try{
+            this.current.products.remove(productToRemove);
+        }catch(ProductSortedLinkedList.NotFoundException e){
+            throw new NotFoundException();
         }
     }
 }
