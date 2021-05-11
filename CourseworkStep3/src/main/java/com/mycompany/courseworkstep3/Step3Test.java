@@ -11,7 +11,7 @@ package com.mycompany.courseworkstep3;
  */
 public class Step3Test {
     public static void main(String[] args){
-        Integer choice;
+        String choice;
         
         PetBSTWithLL petSupplies = new PetBSTWithLL();
 
@@ -25,10 +25,10 @@ public class Step3Test {
             System.out.println("6. Display all pets and the products stocked for them");
             System.out.println("7. Remove a specific product for a specific pet type");
             System.out.println("8. Remove a pet from the system");
-            choice = Input.getInteger("Please choose: ");
+            choice = Input.getString("Please choose: ");
             
             switch (choice){
-                case 1:
+                case "1":
                     System.out.println();
                     System.out.println("1. Add a new pet type");
                     String newPetName = Input.getString("Enter the new pet type you'd like to add: ");
@@ -42,7 +42,7 @@ public class Step3Test {
                     System.out.println();
                     
                     break;
-                case 2:
+                case "2":
                     System.out.println();
                     System.out.println("2. Add a new product for a specific pet");
                     
@@ -76,7 +76,7 @@ public class Step3Test {
                     System.out.println();
                     
                     break;
-                case 3:
+                case "3":
                     System.out.println();
                     System.out.println("3. Find if company supplies for a specific pet type");
                     String petToFindName = Input.getString("Enter the type of pet you'd like to find: ");
@@ -92,14 +92,14 @@ public class Step3Test {
                     System.out.println();
                     
                     break;
-                case 4:
+                case "4":
                     System.out.println();
                     System.out.println("4. Display all pet types the company stocks for");
                     System.out.println("Here are all the pet types the company stocks for: ");
                     System.out.println(petSupplies.displayInOrder());
                     
                     break;
-                case 5:
+                case "5":
                     System.out.println();
                     System.out.println("5. Display all products for a specific pet type");
                     
@@ -118,7 +118,7 @@ public class Step3Test {
                         System.out.println(petSupplies.displayProductsForPet());
                    
                     break;
-                case 6:
+                case "6":
                     System.out.println();
                     System.out.println("6. Display all pets and the products stocked for them");
                     System.out.println();
@@ -126,7 +126,7 @@ public class Step3Test {
                     
                     
                     break;
-                case 7:
+                case "7":
                     System.out.println();
                     System.out.println("7. Remove a specific product for a specific pet type");
                     
@@ -157,7 +157,7 @@ public class Step3Test {
                     System.out.println();
                     
                     break;
-                case 8:
+                case "8":
                     System.out.println();
                     System.out.println("8. Remove a pet from the system");
                     String petToRemove = Input.getString("Enter the type of pet you'd like to remove: ");
@@ -173,13 +173,13 @@ public class Step3Test {
                     
                     break;
                 default:
-                    if(choice == 0)
+                    if(choice.compareTo("0") == 0)
                         System.out.println("Quitting");
                     else
                         System.out.println("Invalid choice, please try again");
                     break;
             }
             
-        }while(choice != 0);
+        }while(choice.compareTo("0") != 0);
     }
 }
