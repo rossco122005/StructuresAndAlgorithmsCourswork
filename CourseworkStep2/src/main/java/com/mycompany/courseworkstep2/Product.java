@@ -14,10 +14,13 @@ public class Product implements Comparable<Product>{
     private String productName;
     private Integer quantity;
     
-    public Product(String productName){
-        this.productNumber = null;
+    public Product(String productNumber, String productName){
+        this.productNumber = productNumber;
         this.productName = productName;
-        this.quantity = 0;
+    }
+    
+    public void addQuantity(Integer quantity){
+        this.quantity = quantity;
     }
     
     @Override
@@ -28,6 +31,19 @@ public class Product implements Comparable<Product>{
             compareTo = -1;
         else if(this.productName.toLowerCase().compareTo(secondProduct.productName.toLowerCase()) > 0)
             compareTo = 1;
+        else{
+            compareTo = 0;
+        }
+        
+        if (compareTo == 0){
+            if(this.productNumber.compareToIgnoreCase(secondProduct.productNumber) < 0){
+                compareTo = -1;
+            }else if(this.productNumber.compareToIgnoreCase(secondProduct.productNumber) > 0){
+                compareTo = 1;
+            }else{
+                compareTo = 0;
+            }
+        }
         
         return compareTo;
     }
@@ -35,7 +51,9 @@ public class Product implements Comparable<Product>{
     public String toString(){
         String details = new String();
         
-        details += this.productNumber + "\n" + this.productName + "\n" + this.quantity + "\n";
+        details += "Product number: " + this.productNumber + "\n";  
+        details += "Product name: " + this.productName + "\n";
+        details += "Quantity: " + this.quantity + "\n";
         
         return details;
     }
