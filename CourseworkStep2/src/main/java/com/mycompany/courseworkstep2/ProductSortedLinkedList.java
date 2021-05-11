@@ -48,7 +48,7 @@ public class ProductSortedLinkedList {
                 current = current.next;
             }
         } else {
-            listDetails += "There are no produicts on the system" + "\n";
+            listDetails += "There are no produicts on the system for this pet" + "\n";
         }
         return listDetails;
     }

@@ -62,8 +62,8 @@ public class ProductTest {
                 case 3:
                     System.out.println();
                     System.out.println("3. Remove a product");
-                    String removeNumber = Input.getString("Enter the new product number: ");
-                    String removeName = Input.getString("Enter the new product name: ");
+                    String removeNumber = Input.getString("Enter the product number to remove: ");
+                    String removeName = Input.getString("Enter the product name you'd like to remove: ");
                     Product removeProduct = new Product(removeNumber, removeName);
                     
                     try{
