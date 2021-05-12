@@ -35,4 +35,21 @@ public class Pet implements Comparable<Pet>{
         
         return compareTo;
     }
+    
+    @Override
+    public boolean equals(Object anotherObject){
+        Boolean equals = false;
+        
+        Pet secondPet = (Pet)anotherObject;
+        
+        String first, second;
+        
+        first = this.name.toLowerCase();
+        second = secondPet.name.toLowerCase();
+        
+        if(first.equals(second))
+            equals = true;
+        
+        return equals;
+    }
 }
